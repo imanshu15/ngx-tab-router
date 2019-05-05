@@ -1,5 +1,7 @@
-<ngb-tabset #tabSet="ngbTabset" (tabChange)="beforeChange($event)">
-
+<ngb-tabset #tabSet="ngbTabset" 
+    (tabChange)="beforeChange($event)" 
+    [destroyOnHide]="false"
+    [activeId] = "tabService.getActiveTabId()">
     <ngb-tab *ngFor="let tab of tabService.tabs()" [disabled]="tab.isDisable" [id] = "tab.tabId">
 
         <ng-template ngbTabTitle>
@@ -14,12 +16,6 @@
 
     </ngb-tab>
 </ngb-tabset>
-
-
-<p>
-        <button class="btn btn-outline-primary" (click)="tabSet.select('1')">Selected tab with "tab-selectbyid2" id</button>
-      </p>
-
       
 <ng-template #search let-modal>
     <div class="modal-body">

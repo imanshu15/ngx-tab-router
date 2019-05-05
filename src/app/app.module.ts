@@ -20,11 +20,17 @@ import { TestThreeComponent } from './components/test-three/test-three.component
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgxTabRouterModule.forRoot([
-      {key: 'TestOne', component: TestOneComponent, title: 'Title 1'},
-      {key: 'TestTwo', component: TestTwoComponent, title: 'Title 2'},
-      {key: 'TestThree', component: TestThreeComponent, title: 'Title 3'}
-    ])
+    NgxTabRouterModule.forRoot({
+      components: [
+        {key: 'one', component: TestOneComponent, title: 'Component 1'},
+        {key: 'two', component: TestTwoComponent, title: 'Component 2'},
+        {key: 'three', component: TestThreeComponent, title: 'Component 3'}
+      ],
+      initialComponents : [
+        {tabKey: 'one'}
+      ],
+      reloadOnTabChange: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -4,7 +4,7 @@ import { NgxTabRouterService } from './ngx-tab-router.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgxTabLoaderDirective } from './ngx-tab-loader.directive';
-import { ComponentsConfig } from './interfaces';
+import { NgxTabConfig } from './model/export.model';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class NgxTabRouterModule {
 
-  static forRoot(config: ComponentsConfig[]): ModuleWithProviders {
+  static forRoot(config: NgxTabConfig): ModuleWithProviders {
     return {
       ngModule: NgxTabRouterModule,
       providers: [

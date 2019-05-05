@@ -18,12 +18,11 @@ export class NgxTabLoaderDirective {
   ngOnChanges() {
     if (this.init) { return; }
     if (this.component) {
-
       const componentsList = this.tabService.getComponents();
 
       if (componentsList && componentsList.length > 0) {
 
-        const matchedComponent = componentsList.filter(a => a.key === this.component);
+        const matchedComponent = componentsList.filter(a => a.key.trim().toLowerCase() === this.component.trim().toLowerCase());
         if (matchedComponent && matchedComponent[0]) {
           const factory = this.resolver.resolveComponentFactory(matchedComponent[0].component);
           const compRef = this.vcRef.createComponent(factory);
