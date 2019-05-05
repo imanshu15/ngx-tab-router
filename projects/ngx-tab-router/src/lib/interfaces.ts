@@ -1,6 +1,13 @@
 export interface TabModel {
     title: string;
+    tabKey: string;
     isDisable: boolean;
-    tabCode: string;
     tabId: number;
+}
+
+export class ComponentsConfig {
+    key: string;
+    component: any;
+    title: string;
+    description?: string;
 }

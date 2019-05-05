@@ -1,16 +1,30 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { NgxTabRouterComponent } from './ngx-tab-router.component';
 import { NgxTabRouterService } from './ngx-tab-router.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { NgxTabLoaderDirective } from './ngx-tab-loader.directive';
+import { ComponentsConfig } from './interfaces';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [NgxTabRouterComponent],
+  declarations: [NgxTabRouterComponent, NgxTabLoaderDirective],
   imports: [
     CommonModule,
+    FormsModule,
     NgbModule
   ],
   exports: [NgxTabRouterComponent],
   providers: [ NgxTabRouterService ]
 })
-export class NgxTabRouterModule { }
+export class NgxTabRouterModule {
+
+  static forRoot(config: ComponentsConfig[]): ModuleWithProviders {
+    return {
+      ngModule: NgxTabRouterModule,
+      providers: [
+        NgxTabRouterService, {provide: 'config', useValue: config }
+      ]
+    };
+  }
+}
