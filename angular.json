@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-tab-router": {
+    "ngx-tab-router-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-tab-router",
+            "outputPath": "dist/ngx-tab-router-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-tab-router:build"
+            "browserTarget": "ngx-tab-router-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-tab-router:build:production"
+              "browserTarget": "ngx-tab-router-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-tab-router:build"
+            "browserTarget": "ngx-tab-router-app:build"
           }
         },
         "test": {
@@ -107,7 +111,7 @@
         }
       }
     },
-    "ngx-tab-router-e2e": {
+    "ngx-tab-router-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +120,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-tab-router:serve"
+            "devServerTarget": "ngx-tab-router-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-tab-router:serve:production"
+              "devServerTarget": "ngx-tab-router-app:serve:production"
             }
           }
         },
@@ -134,7 +138,42 @@
           }
         }
       }
+    },
+    "NgxTabRouter": {
+      "root": "projects/ngx-tab-router",
+      "sourceRoot": "projects/ngx-tab-router/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-tab-router/tsconfig.lib.json",
+            "project": "projects/ngx-tab-router/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-tab-router/src/test.ts",
+            "tsConfig": "projects/ngx-tab-router/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-tab-router/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-tab-router/tsconfig.lib.json",
+              "projects/ngx-tab-router/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "ngx-tab-router"
+  "defaultProject": "ngx-tab-router-app"
 }

@@ -1,0 +1,10 @@
+{
+  "name": "ngx-tab-router",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "bootstrap": "^4.3.1"
+  }
+}

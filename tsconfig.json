@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-tab-router": [
+        "dist/ngx-tab-router"
+      ],
+      "ngx-tab-router/*": [
+        "dist/ngx-tab-router/*"
+      ]
+    }
   }
 }
