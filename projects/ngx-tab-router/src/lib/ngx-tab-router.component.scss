@@ -1,0 +1,11 @@
+.ngxtr-green {
+    margin-right: 0.25em;
+    color: #fff;
+    background-color: #18BC9C;
+    border-color: #18BC9C;
+    &.active {
+        border-color: #18BC9C;
+        color: #18BC9C;
+        background-color: #fff;    
+    }
+}

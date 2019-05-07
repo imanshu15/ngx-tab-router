@@ -2,11 +2,12 @@
     (tabChange)="beforeChange($event)" 
     [destroyOnHide]="false"
     [activeId] = "tabService.getActiveTabId()">
-    <ngb-tab *ngFor="let tab of tabService.tabs()" [disabled]="tab.isDisable" [id] = "tab.tabId">
+    <ngb-tab *ngFor="let tab of tabService.tabs()"
+                [disabled]="tab.isDisable" [id] = "tab.tabId">
 
         <ng-template ngbTabTitle>
             {{tab.title}}
-            <span (click)="closeTab(tab.tabId, $event)"> &times; </span>
+            <span *ngIf = "tab.closeEnable" (click)="closeTab(tab.tabId, $event)"> &times; </span>
         </ng-template>
 
         <ng-template ngbTabContent>
