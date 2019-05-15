@@ -94,6 +94,32 @@ After configuration you can either inject ```NgxTabRouterService``` in to a comp
 
 Or you can use the ```built in component search``` using keys ```CTRL + R```, which will let you type and enter the component key and it will open relevent component in a new tab.
 
+##### Passing data to tab component
+when you open the tab using openTab method you can pass a data object,
+```javascript
+  constructor(private tabService: NgxTabRouterService) { }
+
+  openTabOne() {
+    this.tabService.openTab('one', { id: 1, name: 'imanshu'});
+    // here you can pass a data object
+  }
+```
+In your component you just have to add a property called data,
+
+```javascript
+ export class TestComponent implements OnInit {
+ 
+  public data: any; // define this, this will contain the data object you pass
+
+  constructor() {
+  }
+
+  ngOnInit() {
+    console.log('Data', this.data);
+    // you can see { id: 1, name: 'imanshu'} here
+  }
+}
+```
 
 ### Development
 

@@ -7,6 +7,7 @@ import { NgxTabRouterService } from './ngx-tab-router.service';
 })
 export class NgxTabLoaderDirective {
   @Input() component: string;
+  @Input() data: any;
   componentRef;
   init = false;
 
@@ -32,6 +33,11 @@ export class NgxTabLoaderDirective {
           }
 
           this.componentRef = compRef;
+
+          if  (this.data) {
+            console.log('Data 1', this.data);
+            this.componentRef.instance.data = JSON.parse(this.data);
+          }
           this.init = true;
         }
       } else {

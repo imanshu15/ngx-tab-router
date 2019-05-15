@@ -12,7 +12,7 @@
 
         <ng-template ngbTabContent>
                 {{tab.tabKey}}
-            <div ngxTabLoader component="{{tab.tabKey}}"></div>
+            <div ngxTabLoader component="{{tab.tabKey}}" data = "{{tab.data | json}}"></div>
         </ng-template>
 
     </ngb-tab>

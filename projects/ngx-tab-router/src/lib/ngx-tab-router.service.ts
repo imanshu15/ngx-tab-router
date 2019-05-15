@@ -36,7 +36,7 @@ export class NgxTabRouterService {
     }
   }
 
-  openTab(tabKey: string, isDisable: boolean = false, closeEnable: boolean = true) {
+  openTab(tabKey: string, data: any = null, isDisable: boolean = false, closeEnable: boolean = true) {
     if (tabKey) {
       const configTab = this.getTab(tabKey);
       if (configTab && configTab[0]) {
@@ -45,7 +45,8 @@ export class NgxTabRouterService {
           isDisable,
           tabKey,
           tabId: this.tabId,
-          closeEnable
+          closeEnable,
+          data
         };
         if (tab) {
           this.tabList.push(tab);

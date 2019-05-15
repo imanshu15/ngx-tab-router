@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private tabService: NgxTabRouterService) { }
 
   openTab(value) {
-    this.tabService.openTab(value, false, false);
+    this.tabService.openTab(value, {id : 1, name: 'Imanshu'}, false, false);
   }
 }
 

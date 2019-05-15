@@ -4,4 +4,5 @@ export interface TabModel {
     isDisable: boolean;
     tabId: number;
     closeEnable: boolean;
+    data: any;
 }
