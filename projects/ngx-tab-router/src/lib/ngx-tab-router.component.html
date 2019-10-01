@@ -27,3 +27,13 @@
         <span *ngIf = "searchErr"> Key not found </span>
     </div>
 </ng-template>
+
+<ng-template #close let-modal>
+    <div class="modal-body">
+        <span> {{ closeConfirmMessage }} </span>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="closeConfirmYes()">Yes</button>
+        <button type="button" class="btn btn-outline-dark" (click)="closeConfirmNo()">No</button>
+    </div>
+</ng-template>

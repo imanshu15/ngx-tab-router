@@ -7,15 +7,6 @@ import { NgxTabConfig, NgxTabComponents, NgxTabModel } from './model/export.mode
 })
 export class NgxTabRouterService {
 
-  constructor(@Inject('config')  config: NgxTabConfig) {
-    if (config) {
-      this.componentList = config.components;
-      this.initialComponents = config.initialComponents;
-      this.reloadOnTabChange = config.reloadOnTabChange;
-    }
-    this.init();
-  }
-
   private componentList: NgxTabComponents[];
   private initialComponents: NgxTabModel[];
   private tabList: TabModel[];
@@ -23,6 +14,17 @@ export class NgxTabRouterService {
   public preventTabChange = false;
   private activeTabId = null;
   private reloadOnTabChange = false;
+  private showErrors = false;
+
+  constructor(@Inject('config')  config: NgxTabConfig) {
+    if (config) {
+      this.componentList = config.components;
+      this.initialComponents = config.initialComponents;
+      this.reloadOnTabChange = config.reloadOnTabChange;
+      this.showErrors = config.showErrors;
+    }
+    this.init();
+  }
 
   init() {
     this.tabList = [];
@@ -56,10 +58,10 @@ export class NgxTabRouterService {
           return tab;
         }
       } else {
-        console.error('NgxTabRrouter: Invalid tabKey');
+        this.consoleError('NgxTabRrouter: Invalid tabKey');
       }
     } else {
-      console.error('NgxTabRrouter: tabKey missing');
+      this.consoleError('NgxTabRrouter: tabKey missing');
     }
     return null;
   }
@@ -68,6 +70,10 @@ export class NgxTabRouterService {
     if (tabId) {
       this.tabList = this.tabList.filter(a => a.tabId !== tabId);
     }
+  }
+
+  getOpenTabCount(): number {
+    return this.tabList ? this.tabList.length : 0;
   }
 
   tabs() {
@@ -88,5 +94,11 @@ export class NgxTabRouterService {
 
   getActiveTabId() {
     return this.activeTabId;
+  }
+
+  consoleError(message: string) {
+    if (this.showErrors) {
+      console.error(message);
+    }
   }
 }

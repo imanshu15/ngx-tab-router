@@ -29,7 +29,8 @@ import { TestThreeComponent } from './components/test-three/test-three.component
       initialComponents : [
         {tabKey: 'one'}
       ],
-      reloadOnTabChange: false
+      reloadOnTabChange: false,
+      closeConfirm: false
     })
   ],
   providers: [],

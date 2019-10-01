@@ -35,16 +35,15 @@ export class NgxTabLoaderDirective {
           this.componentRef = compRef;
 
           if  (this.data) {
-            console.log('Data 1', this.data);
             this.componentRef.instance.data = JSON.parse(this.data);
           }
           this.init = true;
         }
       } else {
-          console.error('NgxTabRrouter - Define components in Module.forRoot()');
+          this.tabService.consoleError('NgxTabRrouter - Define components in Module.forRoot()');
         }
       } else {
-        console.error('NgxTabRrouter - Component key missing');
+        this.tabService.consoleError('NgxTabRrouter - Component key missing');
       }
   }
 

@@ -2,6 +2,9 @@ export class NgxTabConfig {
     components: NgxTabComponents[];
     initialComponents: NgxTabModel[];
     reloadOnTabChange?: boolean;
+    closeConfirm?: boolean;
+    closeConfirmMessage?: string;
+    showErrors?: boolean;
 }
 
 export class NgxTabComponents {
