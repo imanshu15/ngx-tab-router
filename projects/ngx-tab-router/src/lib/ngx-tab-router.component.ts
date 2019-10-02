@@ -23,7 +23,7 @@ export class NgxTabRouterComponent implements OnInit {
   private closeTabId: number;
   // configs
   private closeConfirm = false;
-  private closeConfirmMessage: string;
+  public closeConfirmMessage: string;
 
   constructor(@Inject('config')  config: NgxTabConfig, public tabService: NgxTabRouterService, private modalService: NgbModal) {
     if (config) {
